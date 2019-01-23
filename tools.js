@@ -17,3 +17,22 @@ function type(target) {
     return ret;
   }
 }
+//insertAfter： 对该元素的下一个相邻子元素使用insertBefore方法
+// 我自己想的
+Element.prototype.insertAfter = function (x, y) {
+  var nextElem = y.nextSibling;
+  var textElem = document.createTextNode('');
+  this.insertBefore(x, nextElem);
+  this.insertBefore(textElem, x);
+  return x;
+}
+// 另外一种写法
+// Element.prototype.insertAfter = function (targetNode, afterNode) {
+//   var beforeNode = afterNode.nextElementSibling;
+//   if(beforeNode == null) {
+//     this.appendChild(targetNode);
+//   }else {
+//     this.insertBefore(targetNode, beforeNode);
+//   }
+//   return targetNode;
+// }
