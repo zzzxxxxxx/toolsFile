@@ -36,3 +36,19 @@ Element.prototype.insertAfter = function (x, y) {
 //   }
 //   return targetNode;
 // }
+
+
+// getScrollOffset方法： 返回浏览器滚动条滚动距离
+function getScrollOffset () {
+  if(window.pageXOffset) {
+    return {
+      x: window.pageXOffset,
+      y: window.pageYOffset
+    }
+  }else {
+    return {
+      x: document.body.scrollLeft + document.documentElement.scrollLeft,
+      y: document.body.scrollTop + document.documentElement.scrollTop
+    }
+  }
+}
