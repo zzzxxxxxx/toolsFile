@@ -52,3 +52,50 @@ function getScrollOffset () {
     }
   }
 }
+
+
+// 返回可视窗口尺寸
+function getViewPortOffset () {
+  if(window.innerWidth) {
+    return {
+      width: window.innerWidth,
+      Height: window.innerHeight
+    }
+  }else {
+    if(document.compatMode === "CSS1Compat") {
+      return {
+        width:  document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight
+      }
+    }else {
+      return {
+        width: document.body.clientWidth,
+        height: document.body.clientHeight
+      }
+    }
+  }
+}
+
+
+// 获取元素样式
+// 该函数的第二个参数传入的是一个字符串
+function getStyle (elem, prop) {
+  if(window.getComputedStyle) {
+    return window.getComputedStyle(elem, null)[prop];
+  }else {
+    return elem.currentStyle[prop];
+  }
+}
+
+// 为元素添加事件
+function addEvent (elem, type, handle) {
+  if(elem.addEventListener) {
+    elem.addEventListener(type, handle, false);
+  }else if (elem.attachEvent) {
+    elem.attachEvent('on' + type, function(){
+      handle.call(elem);
+    })
+  }else {
+    elem['on' + type] = handle;
+  }
+}
