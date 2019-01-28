@@ -109,3 +109,13 @@ function stopBubble (event) {
     event.cancelBubble();
   }
 }
+
+
+// 阻止默认事件
+function cancelHandle (event) {
+  if(event.preventDefault) {
+    event.preventDefault();
+  }else {
+    event.returnValue = false;
+  }
+}
