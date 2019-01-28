@@ -99,3 +99,13 @@ function addEvent (elem, type, handle) {
     elem['on' + type] = handle;
   }
 }
+
+
+//封装取消冒泡
+function stopBubble (event) {
+  if(event.stopPropagation) {
+    event.stopPropagation();
+  }else {
+    event.cancelBubble();
+  }
+}
